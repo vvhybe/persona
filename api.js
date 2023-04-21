@@ -15,6 +15,8 @@ const api = express();
 api.use(corsConfig);
 api.use(helmetConfig);
 api.use(rateLimitConfig);
+api.use(express.json());
+api.use(express.urlencoded({ extended: true }));
 
 api.listen(process.env.PORT, ()=> console.log(`=> [API] listening on port ${process.env.PORT}`));
 
