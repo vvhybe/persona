@@ -1,24 +1,11 @@
-const humanames = require('human-names');
-const avgAge = Math.floor(Math.random() * 100); // this is a scope error
+const Persona = require("../models/Persona");
 
 const profileRoute = (req, res)=>{
+    // const genders = ["male", "female"];
     try{
-        const maleProfile = {
-            name: humanames.maleRandom(),
-            age: avgAge,
-            sex: "male"
-        }
-
-        const femaleProfile = {
-            name: humanames.femaleRandom(),
-            age: avgAge,
-            sex: "female"
-        }
-
-        const profiles = [maleProfile, femaleProfile];
-     
-        // send a random profile
-        res.status(200).json(profiles[Math.floor(Math.random() * profiles.length)]);
+        // create a new persona arbitrarily (randomly)
+        const profile = new Persona(["male", "female"][Math.floor(Math.random() * 2)]);    
+        res.status(200).json(profile);
     }
     catch(error){
         console.log(error);
