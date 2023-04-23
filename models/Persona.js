@@ -1,4 +1,5 @@
 const humanames = require('human-names');
+const faker = require('faker');
 const { emailDomains, countryByCities } = require('../constants');
 const { getCityByCountry, getCallingCodeByCountry } = require('../utils');
 class Persona{
