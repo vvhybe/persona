@@ -6,7 +6,8 @@ class Persona{
     #country = countryByCities[Math.floor(Math.random() * countryByCities.length)].country;
     constructor(gender = "male", country = this.#country){
         // this.country = country ? country : this.#country;
-        this.name = gender.toLowerCase() == "male" ? humanames.maleRandom() : humanames.femaleRandom();
+        this.profileImage = faker.image.avatar();
+        this.name = `${gender.toLowerCase() == "male" ? humanames.maleRandom()  : humanames.femaleRandom()} ${faker.name.lastName()}`;
         // get random age between 5 and 100
         this.age = Math.floor(Math.random() * 100) + 5;
         this.sex = gender.toLowerCase() == "male" ? gender : "female";
