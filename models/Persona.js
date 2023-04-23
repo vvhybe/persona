@@ -20,8 +20,8 @@ class Persona{
         this.address = {
             country: this.#country,
             city: getCityByCountry(this.#country),
-            street: Math.floor(Math.random() * 10000),
-            zip: Math.floor(Math.random() * 100000)
+            street: `${faker.address.streetName()} - ${Math.floor(Math.random() * 10000)}`,
+            zip: faker.address.zipCode()
         }
     }
 }
