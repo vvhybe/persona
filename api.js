@@ -21,6 +21,6 @@ api.use(express.urlencoded({ extended: true }));
 api.listen(process.env.PORT, ()=> console.log(`=> [API] listening on port ${process.env.PORT}`));
 
 // load routes
+api.get(['/','/profile'], profileRoute);
 api.post('/persona', personaRoute);
-api.get('/profile', profileRoute);
 
