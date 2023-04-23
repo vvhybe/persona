@@ -1,4 +1,5 @@
 const humanames = require('human-names');
+const faker = require('faker');
 const { emailDomains, countryByCities } = require('../constants');
 const { getCityByCountry, getCallingCodeByCountry } = require('../utils');
 class Persona{
@@ -6,7 +7,8 @@ class Persona{
     #country = countryByCities[Math.floor(Math.random() * countryByCities.length)].country;
     constructor(gender = "male", country = this.#country){
         // this.country = country ? country : this.#country;
-        this.name = gender.toLowerCase() == "male" ? humanames.maleRandom() : humanames.femaleRandom();
+        this.profileImage = faker.image.avatar();
+        this.name = `${gender.toLowerCase() == "male" ? humanames.maleRandom()  : humanames.femaleRandom()} ${faker.name.lastName()}`;
         // get random age between 5 and 100
         this.age = Math.floor(Math.random() * 100) + 5;
         this.sex = gender.toLowerCase() == "male" ? gender : "female";
@@ -19,8 +21,8 @@ class Persona{
         this.address = {
             country: this.#country,
             city: getCityByCountry(this.#country),
-            street: Math.floor(Math.random() * 10000),
-            zip: Math.floor(Math.random() * 100000)
+            street: `${faker.address.streetName()} - ${Math.floor(Math.random() * 10000)}`,
+            zip: faker.address.zipCode()
         }
     }
 }
